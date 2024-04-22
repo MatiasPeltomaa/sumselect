@@ -1,0 +1,162 @@
+[gd_scene load_steps=17 format=3 uid="uid://evrry5u0xi48"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_j2afl"]
+[ext_resource type="PackedScene" uid="uid://brvnj63biennh" path="res://scenes/apple_spawner.tscn" id="2_4g8b4"]
+[ext_resource type="Shader" path="res://scripts/main.gdshader" id="2_qiplw"]
+[ext_resource type="AudioStream" uid="uid://b2vqaq5tb8id1" path="res://assets/get.wav" id="4_yw68a"]
+[ext_resource type="AudioStream" uid="uid://nn1b82eox3q5" path="res://assets/win.wav" id="5_5hfbm"]
+[ext_resource type="AudioStream" uid="uid://ciae1h2xeq6j4" path="res://assets/reset.wav" id="6_xwewo"]
+
+[sub_resource type="Environment" id="Environment_l6h8y"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.23
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hrcr"]
+shader = ExtResource("2_qiplw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6tq7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsljy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o5sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsfnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymbvf"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4jbty"]
+scenes/1/scene = ExtResource("2_4g8b4")
+
+[sub_resource type="TileSet" id="TileSet_j1ie6"]
+sources/0 = SubResource("TileSetScenesCollectionSource_4jbty")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j2wp8"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 23.0
+initial_velocity_max = 23.0
+gravity = Vector3(0, 98, 0)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_j2afl")
+
+[node name="main_env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l6h8y")
+
+[node name="main_canvas" type="CanvasLayer" parent="."]
+
+[node name="main_overlay" type="ColorRect" parent="main_canvas"]
+material = SubResource("ShaderMaterial_7hrcr")
+offset_right = 640.0
+offset_bottom = 360.0
+metadata/_edit_use_anchors_ = true
+
+[node name="reset_button" type="Button" parent="main_canvas"]
+offset_left = 295.0
+offset_top = 9.0
+offset_right = 343.0
+offset_bottom = 28.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y6tq7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tsljy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3o5sn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wsfnr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ymbvf")
+
+[node name="main_grid" type="TileMap" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(2, 2)
+scale = Vector2(0.988, 1)
+tile_set = SubResource("TileSet_j1ie6")
+format = 2
+layer_0/tile_data = PackedInt32Array(589825, 0, 65536, 524289, 0, 65536, 458753, 0, 65536, 393217, 0, 65536, 262145, 0, 65536, 196609, 0, 65536, 131073, 0, 65536, 65537, 0, 65536, 65538, 0, 65536, 131074, 0, 65536, 196610, 0, 65536, 262146, 0, 65536, 393218, 0, 65536, 458754, 0, 65536, 524290, 0, 65536, 589826, 0, 65536, 589827, 0, 65536, 524291, 0, 65536, 458755, 0, 65536, 393219, 0, 65536, 262147, 0, 65536, 196611, 0, 65536, 131075, 0, 65536, 65539, 0, 65536, 65540, 0, 65536, 131076, 0, 65536, 196612, 0, 65536, 262148, 0, 65536, 393220, 0, 65536, 458756, 0, 65536, 524292, 0, 65536, 589828, 0, 65536, 589829, 0, 65536, 524293, 0, 65536, 458757, 0, 65536, 393221, 0, 65536, 262149, 0, 65536, 196613, 0, 65536, 131077, 0, 65536, 65541, 0, 65536, 65542, 0, 65536, 131078, 0, 65536, 196614, 0, 65536, 262150, 0, 65536, 393222, 0, 65536, 458758, 0, 65536, 524294, 0, 65536, 589830, 0, 65536, 589831, 0, 65536, 524295, 0, 65536, 458759, 0, 65536, 393223, 0, 65536, 262151, 0, 65536, 196615, 0, 65536, 131079, 0, 65536, 65543, 0, 65536, 65544, 0, 65536, 131080, 0, 65536, 196616, 0, 65536, 262152, 0, 65536, 393224, 0, 65536, 458760, 0, 65536, 524296, 0, 65536, 589832, 0, 65536, 589833, 0, 65536, 524297, 0, 65536, 458761, 0, 65536, 393225, 0, 65536, 262153, 0, 65536, 196617, 0, 65536, 131081, 0, 65536, 65545, 0, 65536, 65546, 0, 65536, 131082, 0, 65536, 196618, 0, 65536, 262154, 0, 65536, 327690, 0, 65536, 393226, 0, 65536, 458762, 0, 65536, 524298, 0, 65536, 589834, 0, 65536, 589835, 0, 65536, 524299, 0, 65536, 458763, 0, 65536, 393227, 0, 65536, 327691, 0, 65536, 262155, 0, 65536, 196619, 0, 65536, 131083, 0, 65536, 65547, 0, 65536, 65548, 0, 65536, 131084, 0, 65536, 196620, 0, 65536, 262156, 0, 65536, 327692, 0, 65536, 393228, 0, 65536, 458764, 0, 65536, 524300, 0, 65536, 589836, 0, 65536, 589837, 0, 65536, 524301, 0, 65536, 458765, 0, 65536, 393229, 0, 65536, 327693, 0, 65536, 262157, 0, 65536, 196621, 0, 65536, 131085, 0, 65536, 65549, 0, 65536, 65550, 0, 65536, 131086, 0, 65536, 196622, 0, 65536, 262158, 0, 65536, 327694, 0, 65536, 393230, 0, 65536, 458766, 0, 65536, 524302, 0, 65536, 589838, 0, 65536, 589839, 0, 65536, 524303, 0, 65536, 458767, 0, 65536, 393231, 0, 65536, 327695, 0, 65536, 262159, 0, 65536, 196623, 0, 65536, 131087, 0, 65536, 65551, 0, 65536, 65552, 0, 65536, 131088, 0, 65536, 196624, 0, 65536, 262160, 0, 65536, 327696, 0, 65536, 393232, 0, 65536, 458768, 0, 65536, 524304, 0, 65536, 589840, 0, 65536, 589841, 0, 65536, 524305, 0, 65536, 458769, 0, 65536, 393233, 0, 65536, 327697, 0, 65536, 262161, 0, 65536, 196625, 0, 65536, 131089, 0, 65536, 65553, 0, 65536, 65554, 0, 65536, 131090, 0, 65536, 196626, 0, 65536, 262162, 0, 65536, 327698, 0, 65536, 393234, 0, 65536, 458770, 0, 65536, 524306, 0, 65536, 589842, 0, 65536, 327681, 0, 65536, 327682, 0, 65536, 327683, 0, 65536, 327684, 0, 65536, 327685, 0, 65536, 327686, 0, 65536, 327687, 0, 65536, 327688, 0, 65536, 327689, 0, 65536)
+
+[node name="main_camera" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(2, 2)
+
+[node name="main_explosion" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_j2wp8")
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.23
+randomness = 0.23
+
+[node name="main_score" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="main_guide" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 164.0
+offset_right = 589.0
+offset_bottom = 187.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+text = "Drag with your cursor to select numbers that add up to 10, 20, 30, 40 or 50"
+
+[node name="main_timer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="main_time" type="Label" parent="."]
+offset_left = 292.0
+offset_top = 6.0
+offset_right = 332.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
+horizontal_alignment = 2
+
+[node name="main_final" type="Label" parent="."]
+offset_left = 120.0
+offset_top = 46.0
+offset_right = 160.0
+offset_bottom = 69.0
+scale = Vector2(2, 2)
+horizontal_alignment = 1
+
+[node name="main_reset" type="Label" parent="."]
+visible = false
+offset_left = 69.5
+offset_top = 90.0
+offset_right = 250.5
+offset_bottom = 113.0
+text = "Click anywhere to reset"
+
+[node name="main_reset_2" type="Label" parent="."]
+offset_left = 149.23
+offset_top = 2.0
+offset_right = 192.23
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+text = "Reset"
+
+[node name="main_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yw68a")
+
+[node name="main_win_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5hfbm")
+
+[node name="main_reset_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xwewo")
+
+[node name="main_reset_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 95.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="main_canvas/reset_button" to="." method="_on_reset_button_pressed"]
+[connection signal="hidden" from="main_guide" to="." method="_on_main_guide_hidden"]
+[connection signal="timeout" from="main_timer" to="." method="_on_main_timer_timeout"]
+[connection signal="hidden" from="main_reset_2" to="." method="_on_main_reset_2_hidden"]
+[connection signal="timeout" from="main_reset_timer" to="." method="_on_main_reset_timer_timeout"]
