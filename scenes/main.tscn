@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://evrry5u0xi48"]
+[gd_scene load_steps=16 format=3 uid="uid://evrry5u0xi48"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_j2afl"]
 [ext_resource type="PackedScene" uid="uid://brvnj63biennh" path="res://scenes/apple_spawner.tscn" id="2_4g8b4"]
 [ext_resource type="Shader" path="res://scripts/main.gdshader" id="2_qiplw"]
 [ext_resource type="AudioStream" uid="uid://b2vqaq5tb8id1" path="res://assets/get.wav" id="4_yw68a"]
 [ext_resource type="AudioStream" uid="uid://nn1b82eox3q5" path="res://assets/win.wav" id="5_5hfbm"]
-[ext_resource type="AudioStream" uid="uid://ciae1h2xeq6j4" path="res://assets/reset.wav" id="6_xwewo"]
 
 [sub_resource type="Environment" id="Environment_l6h8y"]
 background_mode = 3
@@ -142,16 +141,15 @@ text = "Reset"
 
 [node name="main_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_yw68a")
+volume_db = -15.0
 
 [node name="main_win_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_5hfbm")
-
-[node name="main_reset_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_xwewo")
+volume_db = -15.0
 
 [node name="main_reset_timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 95.0
+wait_time = 92.0
 one_shot = true
 autostart = true
 

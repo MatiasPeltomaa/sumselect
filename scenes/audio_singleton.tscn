@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvjqjnfjx3x4b"]
+
+[ext_resource type="Script" path="res://scripts/audio_singleton.gd" id="1_0q8t2"]
+[ext_resource type="AudioStream" uid="uid://ciae1h2xeq6j4" path="res://assets/reset.wav" id="1_uyb6n"]
+[ext_resource type="AudioStream" uid="uid://chio5aghihafm" path="res://assets/buzz.wav" id="3_3vq6p"]
+
+[node name="audio_singleton" type="Node"]
+script = ExtResource("1_0q8t2")
+
+[node name="main_reset_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_uyb6n")
+volume_db = -15.0
+
+[node name="main_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3vq6p")
+volume_db = -15.0
