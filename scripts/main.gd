@@ -13,8 +13,12 @@ var time_left: int = 90
 var game_over: bool = false
 var can_reset: bool = false
 
+var arrow = preload("res://assets/arrow.png")
+var beam = preload("res://assets/Beam.png")
+
 func _ready():
-	$main_reset_sound.play()
+	Input.set_custom_mouse_cursor(arrow)
+	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
 
 func _process(_delta):
 	if guide:
@@ -62,7 +66,6 @@ func _process(_delta):
 
 	if time_left == 0:
 		$main_final.text = score_string
-		#$main_reset.visible = true
 		$main_reset_2.visible = false
 		game_over = true
 		$main_timer.stop()
@@ -79,6 +82,7 @@ func _on_main_timer_timeout():
 
 func _on_reset_button_pressed():
 	get_tree().reload_current_scene()
+	audio_singleton._play_audio()
 
 func _on_main_reset_2_hidden():
 	$main_win_sound.play()
